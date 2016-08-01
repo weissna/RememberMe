@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">RememberMe</string>
+    <string name="emergency_number">8128675309</string>
+    <string name="emergency_button">CALL EMERGENCY CONTACT</string>
+    <string name="phone_number">8122295424</string>
+</resources>
