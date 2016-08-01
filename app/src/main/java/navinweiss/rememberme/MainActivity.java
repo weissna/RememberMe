@@ -51,7 +51,8 @@ public class MainActivity extends Activity {
 
     private void doTheDo() {
         Intent intent = new Intent(Intent.ACTION_DIAL);
-        intent.setData(Uri.parse("tel:8122295424"));
+        String temp = this.getString(R.string.emergency_number);
+        intent.setData(Uri.parse("tel:"+temp));
         startActivity(intent);
     }
 
