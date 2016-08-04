@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "995443626221",
+    "firebase_url": "https://remember-me-9cdf2.firebaseio.com",
+    "project_id": "remember-me-9cdf2",
+    "storage_bucket": "remember-me-9cdf2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:995443626221:android:57537e899389fe30",
+        "android_client_info": {
+          "package_name": "navinweiss.rememberme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "995443626221-lmatfepvdon77db15vmg36vsk1jjkdk2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4yJmClMmehYK_x66rwiHEEQdf0RRItko"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
