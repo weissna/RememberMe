@@ -2,5 +2,7 @@
     <string name="app_name">RememberMe</string>
     <string name="emergency_number">8122295424</string>
     <string name="emergency_button">CALL EMERGENCY CONTACT</string>
+    <string name="new_note">Create a new note</string>
+    <string name="note_preview">"Write a note for yourself"</string>
     <!--<string name="phone_number">8122295424</string>-->
 </resources>

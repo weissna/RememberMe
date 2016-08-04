@@ -4,31 +4,40 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends Activity {
 
-    private Button button;
+    private Button emergencyCallButton;
+    private Button notesButton;
 
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        button = (Button) findViewById(R.id.emergency_button);
+        emergencyCallButton = (Button) findViewById(R.id.emergency_button);
+        notesButton = (Button) findViewById(R.id.ReminderButton);
         // add button listener
-        button.setOnClickListener(new View.OnClickListener() {
-
-
-            @SuppressWarnings("MissingPermission")
+        emergencyCallButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                doTheDo();
-
+                    Log.d("ttt", "emergency?");
+                    doTheDo();
             }
-
         });
+
+        notesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("ttt", "Notes");
+                Intent notes = new Intent(MainActivity.this, NotesActivity.class);
+                MainActivity.this.startActivity(notes);
+            }
+        });
+
 
     }
 
