@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends Activity {
@@ -20,8 +19,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         FirebaseDatabase db = FirebaseDatabase.getInstance();
-        DatabaseReference ref = db.getReference("notes");
-        ref.setValue("Yo, world1");
+//        DatabaseReference ref = db.getReference("notes");
+//        ref.setValue("Yo, world1");
 
         emergencyCallButton = (Button) findViewById(R.id.emergency_button);
         notesButton = (Button) findViewById(R.id.ReminderButton);
