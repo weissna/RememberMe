@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,8 +16,9 @@ public class MainActivity extends Activity {
 
     private Button emergencyCallButton;
     private Button notesButton;
-    private FirebaseDatabase db;
-    private int numOfNotes = 0;
+    public FirebaseDatabase db;
+    private Note mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,9 @@ public class MainActivity extends Activity {
         emergencyCallButton = (Button) findViewById(R.id.emergency_button);
         notesButton = (Button) findViewById(R.id.ReminderButton);
         // add button listener
+
+
+
         emergencyCallButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,6 +52,13 @@ public class MainActivity extends Activity {
         });
 
 
+//        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recycler_View);
+//        mLayoutManager = new LinearLayoutManager(this);
+//        recyclerView.setLayoutManager(mLayoutManager);
+//        recyclerView.setHasFixedSize(true);
+//        mAdapter = new Note(recyclerView);
+//        recyclerView.setAdapter(mAdapter);
+
     }
 
     private void doTheDo() {
@@ -63,16 +75,11 @@ public class MainActivity extends Activity {
     private FirebaseDatabase setupDatabase() {
         db = FirebaseDatabase.getInstance();
         DatabaseReference ref = db.getReference("notes");
-        ref.child("note1").setValue("Note 1");
-        ref.child("note2").setValue("Note 2");
+//        ref.child("note1").setValue("Note 1");
+//        ref.child("note2").setValue("Note 2");
         return db;
     }
 
-    public void writeNoteDatabase(String str){
-        String refStr = "notes" + numOfNotes;
-        DatabaseReference ref = db.getReference("notes");
-        ref.child(refStr).setValue(str);
-        numOfNotes++;
-    }
+
 
 }
