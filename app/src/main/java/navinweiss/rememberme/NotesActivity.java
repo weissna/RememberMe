@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -30,7 +31,7 @@ public class NotesActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notesandreminders);
         saveNote = (Button) findViewById(R.id.save_note);
-        saveNote.setVisibility(View.GONE);
+        saveNote.setVisibility(View.INVISIBLE);
         newNoteButton = (Button) findViewById(R.id.newNoteButton);
 //        note = (EditText) findViewById(R.id.note1);
 
@@ -51,8 +52,14 @@ public class NotesActivity extends Activity
 
             @Override
             public void onClick(View v) {
+                RelativeLayout mRlayout = (RelativeLayout) findViewById(R.id.relLayout);
+                RelativeLayout.LayoutParams mRparams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
                 note = new EditText(NotesActivity.this);
-
+                note.setLayoutParams(mRparams);
+                mRlayout.addView(note);
+                note.setVisibility(View.VISIBLE);
+                note.setHint("Write your note here");
+                saveNote.setVisibility(View.VISIBLE);
             }
         });
 
@@ -60,6 +67,14 @@ public class NotesActivity extends Activity
             @Override
             public void onClick(View v) {
                 writeNoteToDatabase(note.getText().toString());
+//                RelativeLayout mRlayout = (RelativeLayout) findViewById(R.id.relLayout);
+//                RelativeLayout.LayoutParams mRparams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+//                mRparams.addRule(RelativeLayout.BELOW, 10);
+//                TextView temp1 = new TextView(NotesActivity.this);
+//                temp1.setLayoutParams(mRparams);
+//                mRlayout.addView(temp1);
+//                temp1.setText(note.getText().toString());
+//                temp1.setFocusable(false);
 
 
 //                mNote = new Note(recyclerView);
@@ -69,13 +84,10 @@ public class NotesActivity extends Activity
                 numOfNotes++;
 //                Note newNote = new Note(temp);
 
-
-                newNoteButton.setVisibility(View.VISIBLE);
-                saveNote.setVisibility(View.INVISIBLE);
 //                readNotesFromDatabase();
             }
         });
-
+        saveNote.setVisibility(View.VISIBLE);
     }
 
     public void writeNoteToDatabase(String str){
