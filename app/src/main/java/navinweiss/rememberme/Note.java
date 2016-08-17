@@ -1,64 +1,41 @@
 package navinweiss.rememberme;
 
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.google.firebase.database.Exclude;
 
 /**
  * Created by weissna on 8/5/2016.
  */
-public class Note extends RecyclerView.Adapter<Note.ViewHolder> {
-    private RecyclerView mRecyclerView;
-    private List <String> mNoteList = new ArrayList<>();
+public class Note {
+    public String mNote;
+    private String key;
 
-    public Note(RecyclerView recyclerView){
-        this.mRecyclerView = recyclerView;
+    public Note(){
 
     }
 
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.note_view, parent, false);
-        return new ViewHolder(itemView);
+    public Note(String note){
+        this.mNote = note;
     }
 
-    @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.mNoteText.setText(mNoteList.get(position));
+    public String getNote(){
+        return mNote;
     }
 
-    @Override
-    public int getItemCount() {
-        return mNoteList.size();
+    public void setNote(String note){
+        this.mNote = note;
     }
 
-    private void deleteItem(int pos) {
-        mNoteList.remove(pos);
-        notifyItemRemoved(pos);
+    @Exclude
+    public String getKey(){
+        return key;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView mNoteText;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            itemView.setOnLongClickListener(new View.OnLongClickListener(){
-
-                @Override
-                public boolean onLongClick(View v) {
-                    deleteItem(getAdapterPosition());
-                    return false;
-                }
-            });
-
-            mNoteText = (TextView)itemView.findViewById(R.id.note_text);
-        }
+    public void setKey(String key){
+        this.key = key;
     }
 
+    public void setValue(Note updateNote) {
+        this.mNote = updateNote.mNote;
+    }
 
 }
